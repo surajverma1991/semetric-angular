@@ -1,0 +1,79 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+                <div class="col-md-12" style="width: 100%;">
+                    <h3 class="mb-4">{{title}}</h3>
+                    <form #f="ngForm" (ngSubmit)="log(f)">
+                        <div class="form-group">
+                            <input type="text" required minlength="3" class="form-control" placeholder="Enter Name Your" ngModel name="name" #name="ngModel">
+                            <div class="alert alert-danger" *ngIf="name.invalid && name.touched">
+                                    
+                                <span *ngIf="name.errors.required">Name is mandtory</span>
+                                <span *ngIf="name.errors.minlength">It Should be atelast 3 characters</span>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group ">
+                            <input type="text" required placeholder="Enter Your Age" minlength="2" maxlength="3" ngModel name="age" #age="ngModel">
+                            <div class="alert alert-danger" *ngIf="age.invalid && age.touched">
+                                <span *ngIf="age.errors.required">Age its required</span>
+                                <span *ngIf="age.errors.minlength">Put Atlist 1 No.</span>
+                                <span *ngIf="age.errors.maxlength">Put Atlist 3 No.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" required placeholder="Enter Email Address" ngModel name="mail" #mail="ngModel">
+                            <div class="alert alert-danger" *ngIf="mail.invalid && mail.touched">
+                                <span *ngIf="mail.errors.required">Enter Mail Id</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary">Submit</button>
+                            <button class="btn btn-danger">Cancel</button>
+                        </div>
+                    </form>
+                    <table class="table table-border text-center">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{f.value.name}}</td>
+                                <td>{{f.value.age}}</td>
+                                <td>{{f.value.mail}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-12" style="width: 100%;text-align: center;">
+                    <h3>Live Json Data Format</h3>
+                    <table class="table-border table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>User-Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let user of users ">
+                                <td>{{user.id}}</td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.username}}</td>
+                                <td>{{user.email}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+</div>
